@@ -1,3 +1,4 @@
+// creating classes for Card and Deck
 
 class Card {
     _name;
@@ -43,6 +44,8 @@ class Deck {
         return this._player2Deck;
     }
     
+// this function creates an unshuffled deck of 52 cards, 13 in each suit, and assigns a value to each card
+
     buildDeck() {
         const suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades'];
 
@@ -57,6 +60,8 @@ class Deck {
         });
     }
 
+// this function takes the unshuffled deck array, and randomly distributes the cards evenly to decks for player1 and player2
+
     shuffleDeck() {
         for (let i = 0; i < 26; i++) {
             this._player1Deck.push(this._unshuffledDeck.splice((Math.floor(Math.random()*this._unshuffledDeck.length)),1));
@@ -64,6 +69,8 @@ class Deck {
         }
     }
 }
+
+// creating a menu to launch and setup the game
 
 class Menu {
     player1;
@@ -103,7 +110,7 @@ class Menu {
         1) Add Players
         2) Shuffle and Deal Cards
         3) Declare WAR!!!
-        --------------------------`);
+        ----------------------------`);
     }
 
     addPlayers() {
@@ -117,6 +124,10 @@ class Menu {
         this.deck.shuffleDeck();
         alert('Deck is shuffled and player hands have been dealt');
     }
+
+    // this function runs the game code, it iterates through both players decks comparing card values and tallying points
+    // at the end it declares a victor and shows the point totals
+    // once the game is run, players can re-shuffle the deck and play again
 
     startWAR() {
         this.player1Points = 0;
